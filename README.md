@@ -1,2 +1,2 @@
 # common
-A modern Go utility libraries
+A Go utility libraries
