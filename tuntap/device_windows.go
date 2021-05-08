@@ -4,6 +4,12 @@ package tuntap
 
 import "golang.zx2c4.com/wireguard/tun"
 
+const (
+	offset = 0
+
+	defaultMTU = 0 /* auto */
+)
+
 type device struct {
 	ifce *tun.NativeTun
 }
@@ -14,10 +20,10 @@ func (d *device) Name() string {
 }
 func (d *device) Close() error { return d.ifce.Close() }
 func (d *device) Read(p []byte) (n int, err error) {
-	return d.ifce.Read(p)
+	return d.ifce.Read(p, offset)
 }
 func (d *device) Write(p []byte) (n int, err error) {
-	return d.ifce.Write(p)
+	return d.ifce.Write(p, offset)
 }
 func (d *device) String() string {
 	return "TUN"
