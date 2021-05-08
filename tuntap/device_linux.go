@@ -28,10 +28,11 @@ func newTUN(name string) (Interface, error) {
 }
 
 func newTAP(name string) (Interface, error) {
-	ifce, err := water.New(water.Config{
+	cfg := water.Config{
 		DeviceType: water.TAP,
-		Name:       name,
-	})
+	}
+	cfg.Name = name
+	ifce, err := water.New(cfg)
 
 	if err != nil {
 		return nil, err
