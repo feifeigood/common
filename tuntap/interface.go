@@ -3,6 +3,8 @@ package tuntap
 import "errors"
 
 var (
+	ErrNotReady    = errors.New("device is not ready")
+	ErrClosed      = errors.New("device was closed")
 	ErrUnsupported = errors.New("device is unsupported on this platform")
 )
 
